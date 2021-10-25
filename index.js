@@ -3,12 +3,10 @@ so add a function to the script (not the constructor)
 that can take user’s input and store the new book objects into an array. */
 
 let myLibrary = [];
-const boxId = document.getElementById("box")
 const addBookBtn = document.getElementById("addBookBtn")
+let popUp = document.getElementById("pop")
 
-addBookBtn.addEventListener("click", () => {
-    alert("I am sleepy!")
-})
+addBookBtn.addEventListener("click", closePopup) // no need "()"
 
 function Books() {
     // something
@@ -19,4 +17,11 @@ function storeBooks() {
     boxId.innerHTML = myLibrary
 }
 
-storeBooks()
+function closePopup() {
+    if (popUp.style.display === "none") { //must be "==="
+        popUp.style.display = "block";
+    } else {
+        popUp.style.display = "none";
+    }
+}
+
