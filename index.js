@@ -27,7 +27,10 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary() {
+    const newBookEntry = new Book()
+    myLibrary.push(newBookEntry)
     // push new Books into myLibrary
+    console.log(myLibrary)
     closePopup()
 }
 
