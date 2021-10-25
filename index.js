@@ -4,24 +4,28 @@ that can take user’s input and store the new book objects into an array. */
 
 let myLibrary = [];
 const addBookBtn = document.getElementById("addBookBtn")
+const submitBtn = document.getElementById("submit")
 let popUp = document.getElementById("pop")
 
-addBookBtn.addEventListener("click", closePopup) // no need "()"
-
-function Books() {
-    // something
-}
-
-function storeBooks() {
-    myLibrary.push()
-    boxId.innerHTML = myLibrary
-}
+addBookBtn.addEventListener("click", closePopup) // no need "()" for function
+submitBtn.addEventListener("click", addBookToLibrary)
 
 function closePopup() {
-    if (popUp.style.display === "none") { //must be "==="
+    if (popUp.style.display === "none") { //must be "===" cannot just "="
         popUp.style.display = "block";
     } else {
         popUp.style.display = "none";
     }
 }
+
+function Books() {
+    // something
+}
+
+function addBookToLibrary() {
+    myLibrary.push()
+    closePopup()
+}
+
+
 
