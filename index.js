@@ -2,10 +2,11 @@
 so add a function to the script (not the constructor) 
 that can take user’s input and store the new book objects into an array. */
 
-let myLibrary = [];
 const addBookBtn = document.getElementById("addBookBtn")
 const submitBtn = document.getElementById("submit")
-let popUp = document.getElementById("pop")
+const popUp = document.getElementById("pop")
+let myLibrary = [];
+
 
 addBookBtn.addEventListener("click", closePopup) // no need "()" for function
 submitBtn.addEventListener("click", addBookToLibrary)
@@ -18,14 +19,15 @@ function closePopup() {
     }
 }
 
-function Books() {
-    // something
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
 }
 
 function addBookToLibrary() {
-    myLibrary.push()
+    // push new Books into myLibrary
     closePopup()
 }
-
-
 
