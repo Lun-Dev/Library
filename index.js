@@ -11,11 +11,11 @@ let myLibrary = [];
 addBookBtn.addEventListener("click", closePopup) // no need "()" for function
 submitBtn.addEventListener("click", addBookToLibrary)
 
-const book = {
-    title: "",
-    author: "",
-    pages: "",
-    read: false
+const book = { // Prototype Object
+    title: "", // Title of book
+    author: "", // Author of book
+    pages: "", // Pages of book
+    read: false // Read or not?
 };
 
 function closePopup() {
