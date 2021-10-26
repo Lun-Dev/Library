@@ -5,6 +5,10 @@ that can take user’s input and store the new book objects into an array. */
 const addBookBtn = document.getElementById("addBookBtn")
 const submitBtn = document.getElementById("submit")
 const popUp = document.getElementById("pop")
+const title = document.getElementById("title")
+const author = document.getElementById("author")
+const pages = document.getElementById("pages")
+
 let myLibrary = [];
 
 
@@ -19,17 +23,18 @@ function closePopup() {
     }
 }
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+const book = {
+    title: "",
+    author: "",
+    pages: 0,
+    read: false
+};
+
 
 function addBookToLibrary() {
-    const newBookEntry = new Book()
+    const newBookEntry = Object.create(book)
+    console.log(pages.textContent)
     myLibrary.push(newBookEntry)
-    // push new Books into myLibrary
     console.log(myLibrary)
     closePopup()
 }
