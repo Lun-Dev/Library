@@ -11,9 +11,15 @@ const pages = document.getElementById("pages")
 
 let myLibrary = [];
 
-
 addBookBtn.addEventListener("click", closePopup) // no need "()" for function
 submitBtn.addEventListener("click", addBookToLibrary)
+
+const book = {
+    title: "",
+    author: "",
+    pages: "",
+    read: false
+};
 
 function closePopup() {
     if (popUp.style.display === "none") { //must be "===" cannot just "="
@@ -23,19 +29,42 @@ function closePopup() {
     }
 }
 
-const book = {
-    title: "",
-    author: "",
-    pages: 0,
-    read: false
-};
-
+function clearInput() {
+    title.value = ""
+    author.value = ""
+    pages.value = ""
+}
 
 function addBookToLibrary() {
     const newBookEntry = Object.create(book)
-    console.log(pages.textContent)
+    const info = document.querySelectorAll('[data-cate]')
+    info.forEach(item => {
+        switch (item.dataset.cate) {
+            case "title":
+                newBookEntry.title = item.value;
+            case "author":
+                newBookEntry.author = item.value;
+            case "pages":
+                newBookEntry.pages = parseInt(pages.value)
+        }
+    })
     myLibrary.push(newBookEntry)
     console.log(myLibrary)
+    clearInput()
     closePopup()
 }
 
+
+// if (item.dataset.cate === "title") {
+//     newBookEntry.title = item.value;
+// } 
+// else if (item.dataset.cate === "author") {
+//     newBookEntry.author = author.value
+// }
+// else if (item.dataset.cate === "pages") {
+//     newBookEntry.pages = parseInt(pages.value)
+// }
+
+// newBookEntry.title = title.value
+// newBookEntry.author = author.value
+// newBookEntry.pages = parseInt(pages.value)
