@@ -5,9 +5,6 @@ that can take user’s input and store the new book objects into an array. */
 const addBookBtn = document.getElementById("addBookBtn")
 const submitBtn = document.getElementById("submit")
 const popUp = document.getElementById("pop")
-const title = document.getElementById("title")
-const author = document.getElementById("author")
-const pages = document.getElementById("pages")
 
 let myLibrary = [];
 
@@ -33,11 +30,13 @@ function clearInput() {
     title.value = ""
     author.value = ""
     pages.value = ""
+    checkbox.checked = false;
 }
 
 function addBookToLibrary() {
     const newBookEntry = Object.create(book)
     const info = document.querySelectorAll('[data-cate]')
+    const checkbox = document.getElementById('checkbox')
     info.forEach(item => {
         switch (item.dataset.cate) {
             case "title":
@@ -48,6 +47,9 @@ function addBookToLibrary() {
                 newBookEntry.pages = parseInt(pages.value)
         }
     })
+    if (checkbox.checked) {
+        newBookEntry.read = true
+    }
     myLibrary.push(newBookEntry)
     console.log(myLibrary)
     clearInput()
@@ -68,3 +70,7 @@ function addBookToLibrary() {
 // newBookEntry.title = title.value
 // newBookEntry.author = author.value
 // newBookEntry.pages = parseInt(pages.value)
+
+// const title = document.getElementById("title")
+// const author = document.getElementById("author")
+// const pages = document.getElementById("pages")
