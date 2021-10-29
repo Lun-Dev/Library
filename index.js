@@ -52,6 +52,8 @@ function addBookToLibrary() {
     })
     if (checkbox.checked) {
         newBookEntry.read = true
+    } else {
+        newBookEntry.read = false
     }
     myLibrary.push(newBookEntry)
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
@@ -64,7 +66,17 @@ function addBookToLibrary() {
 function displayBook() {
     let display = ""
     for (let i = 0; i < myLibrary.length; i++) {
-        display += `<div class="box">${JSON.stringify(myLibrary[i])}</div>`
+        const htmlOutput = JSON.stringify(myLibrary[i], (key, value) => {
+            if (key === "read") { // hide the propery with the key "read"
+                return undefined;
+            }
+                return value;
+        });
+
+    display += `<div class="box">${htmlOutput}
+                <button type="button">Read</button>
+                <button type="button">Delete</button>
+                </div>`
     }
     bookShelf.innerHTML = display;
 }
