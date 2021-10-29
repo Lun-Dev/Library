@@ -7,8 +7,15 @@ const submitBtn = document.getElementById("submit")
 const popUp = document.getElementById("pop")
 const closeBtn = document.getElementById("addBookBtn")
 const bookShelf = document.querySelector("#book-shelf")
+const storageExist = JSON.parse(localStorage.getItem("myLibrary"))
 
-let myLibrary = [];
+let myLibrary = []
+
+if (storageExist !== null) {
+    bookShelf.innerHTML = JSON.stringify(storageExist)
+} else {
+    bookShelf.innerHTML = ""
+}
 
 addBookBtn.addEventListener("click", closePopup) // no need "()" for function
 submitBtn.addEventListener("click", addBookToLibrary)
@@ -80,7 +87,6 @@ function displayBook() {
     }
     bookShelf.innerHTML = display;
 }
-
 
 // if (item.dataset.cate === "title") {
 //     newBookEntry.title = item.value;
