@@ -54,6 +54,7 @@ function addBookToLibrary() {
         newBookEntry.read = true
     }
     myLibrary.push(newBookEntry)
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     console.log(myLibrary)
     displayBook()
     clearInput()
@@ -61,7 +62,11 @@ function addBookToLibrary() {
 }
 
 function displayBook() {
-    bookShelf.innerHTML = JSON.stringify(myLibrary);
+    let display = ""
+    for (let i = 0; i < myLibrary.length; i++) {
+        display += `<div class="box">${JSON.stringify(myLibrary[i])}</div>`
+    }
+    bookShelf.innerHTML = display;
 }
 
 
