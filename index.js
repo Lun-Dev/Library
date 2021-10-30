@@ -17,12 +17,11 @@ if (storageExist !== null) {
     let display = "";
     let i = 0;
     while (i < lengthCheck.length) {
-        display += `<div class="box">${JSON.stringify(storageExist[i], (key,value) => {
-                    if (key === "read") {
-                        return undefined;
-                    }
-                        return value;
-                })}
+        display += 
+               `<div id="book-shelf-item">
+                <div class="box">Title: ${lengthCheck[i]['title']}</div>
+                <div class="box">Author: ${lengthCheck[i]['author']}</div>
+                <div class="box">Pages: ${lengthCheck[i]['pages']}</div>
                 <button type="button">Read</button>
                 <button type="button">Delete</button>
                 </div>`;
@@ -119,3 +118,17 @@ function displayBook() {
 // const title = document.getElementById("title")
 // const author = document.getElementById("author")
 // const pages = document.getElementById("pages")
+
+// div class="box">${JSON.stringify(storageExist[i], (key,value) => {
+//     switch (true) {
+//         case (key === "title"):
+//             return `${key}: ${value}<br>`;
+//         case (key === "author"):
+//             return `${key}: ${value}<br>`;
+//         case (key === "pages"):
+//             return `${key}: ${value}<br>`;
+//         case (key === "read"):
+//             return undefined;
+//     }
+//         return value;
+// })}
