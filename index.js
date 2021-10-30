@@ -17,12 +17,6 @@ if (storageExist !== null) {
     let display = "";
     let i = 0;
     while (i < lengthCheck.length) {
-        const htmlOutput = JSON.stringify(myLibrary[i], (key, value) => {
-            if (key === "read") { // hide the propery with the key "read"
-                return undefined;
-            }
-                return value;
-        });
         display += `<div class="box">${JSON.stringify(storageExist[i], (key,value) => {
                     if (key === "read") {
                         return undefined;
