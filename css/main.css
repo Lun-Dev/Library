@@ -30,7 +30,10 @@
 }
 
 #book-shelf {
+    justify-content: center;
     display: grid;
+    grid-template-columns: repeat(2, 250px);
+    /* https://www.youtube.com/watch?v=9zBsdzdE4sM */
 }
 
 #book-shelf-item {

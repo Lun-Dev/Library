@@ -13,6 +13,9 @@ const lengthCheck = JSON.parse(checker)
 
 let myLibrary = []
 
+window.onload = showBook()
+
+function showBook() {
 if (storageExist !== null) {
     let display = "";
     let i = 0;
@@ -29,6 +32,7 @@ if (storageExist !== null) {
     } bookShelf.innerHTML = display;
 } else {
     bookShelf.innerHTML = ""
+}
 }
 
 addBookBtn.addEventListener("click", closePopup) // no need "()" for function
