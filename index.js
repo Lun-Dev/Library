@@ -8,11 +8,32 @@ const popUp = document.getElementById("pop")
 const closeBtn = document.getElementById("addBookBtn")
 const bookShelf = document.querySelector("#book-shelf")
 const storageExist = JSON.parse(localStorage.getItem("myLibrary"))
+const checker = localStorage.getItem("myLibrary")
+const lengthCheck = JSON.parse(checker)
 
 let myLibrary = []
 
 if (storageExist !== null) {
-    bookShelf.innerHTML = JSON.stringify(storageExist)
+    let display = "";
+    let i = 0;
+    while (i < lengthCheck.length) {
+        const htmlOutput = JSON.stringify(myLibrary[i], (key, value) => {
+            if (key === "read") { // hide the propery with the key "read"
+                return undefined;
+            }
+                return value;
+        });
+        display += `<div class="box">${JSON.stringify(storageExist[i], (key,value) => {
+                    if (key === "read") {
+                        return undefined;
+                    }
+                        return value;
+                })}
+                <button type="button">Read</button>
+                <button type="button">Delete</button>
+                </div>`;
+    i++;
+    } bookShelf.innerHTML = display;
 } else {
     bookShelf.innerHTML = ""
 }
@@ -34,7 +55,6 @@ function closePopup() {
         popUp.style.display = "none";
     }
 }
-
 
 function clearInput() {
     title.value = ""
