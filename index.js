@@ -97,7 +97,10 @@ function displayBook() {
                 return value;
         });
 
-    display += `<div class="box">${htmlOutput}
+    display += `<div id="book-shelf-item">
+                <div class="box">Title: ${htmlOutput}</div>
+                <div class="box">Author: ${htmlOutput}</div>
+                <div class="box">Pages: ${htmlOutput}</div>
                 <button type="button">Read</button>
                 <button type="button">Delete</button>
                 </div>`
