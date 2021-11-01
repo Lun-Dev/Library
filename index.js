@@ -17,8 +17,8 @@ window.onload = showBook()
 
 function showBook() {
 if (storageExist !== null) {
-    let display = "";
     let i = 0;
+    let display = "";
     while (i < lengthCheck.length) {
         display += 
                `<div id="book-shelf-item">
@@ -79,6 +79,7 @@ function addBookToLibrary() {
     } else {
         newBookEntry.read = false
     }
+    // if local storage has key, just push the object
     myLibrary.push(newBookEntry)
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     console.log(myLibrary)
@@ -97,7 +98,7 @@ function displayBook() {
                 return value;
         });
 
-    display += `<div id="book-shelf-item">
+    display+= `<div id="book-shelf-item">
                 <div class="box">Title: ${htmlOutput}</div>
                 <div class="box">Author: ${htmlOutput}</div>
                 <div class="box">Pages: ${htmlOutput}</div>
@@ -106,6 +107,12 @@ function displayBook() {
                 </div>`
     }
     bookShelf.innerHTML = display;
+}
+
+let existing = JSON.parse(localStorage.getItem("myLibrary"))
+if (existing) {
+	myLibrary = existing
+  console.log(myLibrary)
 }
 
 // if (item.dataset.cate === "title") {
