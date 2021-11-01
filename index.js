@@ -79,9 +79,15 @@ function addBookToLibrary() {
     } else {
         newBookEntry.read = false
     }
-    // if local storage has key, just push the object
-    myLibrary.push(newBookEntry)
-    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    
+    if (storageExist) {
+        myLibrary = storageExist
+        myLibrary.push(newBookEntry)
+        localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    } else {
+        myLibrary.push(newBookEntry)
+        localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    }
     console.log(myLibrary)
     displayBook()
     clearInput()
@@ -109,11 +115,7 @@ function displayBook() {
     bookShelf.innerHTML = display;
 }
 
-let existing = JSON.parse(localStorage.getItem("myLibrary"))
-if (existing) {
-	myLibrary = existing
-  console.log(myLibrary)
-}
+
 
 // if (item.dataset.cate === "title") {
 //     newBookEntry.title = item.value;
