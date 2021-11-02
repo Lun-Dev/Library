@@ -15,18 +15,13 @@ let myLibrary = [] // Empty local array as the base
 
 window.onload = () => { 
     loadBook()
-    if (storageExist) {
-        showBooks() // renders all objects within localStorage
-    } else {
-        myLibrary = []
-    }
     }
 
 function loadBook() {
-	if (storageExist) { // On load, check if there is existing key
+	if (storageExist) { // On load, check if there is existing key in local storage
         myLibrary = storageExist // If exist, the empty local array equals to existing localStorage
         console.log(myLibrary)
-  }
+    } 
 }
 
 // Show all books
@@ -76,7 +71,6 @@ function addBookToLibrary() {
         newBookEntry.read = false
     }
     dataChecker(newBookEntry)
-    loadBook()
     clearInput()
     closePopup()
 }
