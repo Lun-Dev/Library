@@ -14,56 +14,37 @@ const lengthCheck = JSON.parse(checker)
 let myLibrary = [] // Empty local array as the base
 
 window.onload = () => { 
-	loadBook()
-  if (storageExist) {
-    showBooks()
-  }
-}
+    loadBook()
+    if (storageExist) {
+        showBooks() // renders all objects within localStorage
+    } else {
+        myLibrary = []
+    }
+    }
 
-// On load, check if there is existing key
 function loadBook() {
-	if (storageExist) {
-  	myLibrary = storageExist
-    console.log(myLibrary)
+	if (storageExist) { // On load, check if there is existing key
+        myLibrary = storageExist // If exist, the empty local array equals to existing localStorage
+        console.log(myLibrary)
   }
 }
 
 // Show all books
 function showBooks() {
-	let i = 0;
-  let display = "";
-  while (i < storageExist.length) {
-    display += 
-      `<div id="book-shelf-item">
-      <div class="box">Title: ${storageExist[i]['title']}</div>
-      <div class="box">Author: ${storageExist[i]['author']}</div>
-      <div class="box">Pages: ${storageExist[i]['pages']}</div>
-      <button type="button">Read</button>
-      <button type="button">Delete</button>
-      </div>`;
-    i++;  
-  } bookShelf.innerHTML = display;
-}
-
-/* function showBook() {
-if (storageExist !== null) {
     let i = 0;
     let display = "";
-    while (i < lengthCheck.length) {
+    while (i < storageExist.length) {
         display += 
-               `<div id="book-shelf-item">
-                <div class="box">Title: ${lengthCheck[i]['title']}</div>
-                <div class="box">Author: ${lengthCheck[i]['author']}</div>
-                <div class="box">Pages: ${lengthCheck[i]['pages']}</div>
-                <button type="button">Read</button>
-                <button type="button">Delete</button>
-                </div>`;
-    i++;
-    } bookShelf.innerHTML = display;
-} else {
-    bookShelf.innerHTML = ""
-}
-} */
+        `<div id="book-shelf-item">
+        <div class="box">Title: ${storageExist[i]['title']}</div>
+        <div class="box">Author: ${storageExist[i]['author']}</div>
+        <div class="box">Pages: ${storageExist[i]['pages']}</div>
+        <button type="button">Read</button>
+        <button type="button">Delete</button>
+        </div>`;
+        i++;  
+        } bookShelf.innerHTML = display;
+    }
 
 addBookBtn.addEventListener("click", closePopup) // no need "()" for function
 submitBtn.addEventListener("click", addBookToLibrary)
@@ -95,7 +76,7 @@ function addBookToLibrary() {
         newBookEntry.read = false
     }
     dataChecker(newBookEntry)
-    displayBook()
+    loadBook()
     clearInput()
     closePopup()
 }
@@ -110,27 +91,6 @@ function dataChecker(newBookEntry) {
         localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     }
     }
-
-function displayBook() {
-    let display = ""
-    for (let i = 0; i < myLibrary.length; i++) {
-        const htmlOutput = JSON.stringify(myLibrary[i], (key, value) => {
-            if (key === "read") { // hide the propery with the key "read"
-                return undefined;
-            }
-                return value;
-        });
-
-    display+= `<div id="book-shelf-item">
-                <div class="box">Title: ${htmlOutput}</div>
-                <div class="box">Author: ${htmlOutput}</div>
-                <div class="box">Pages: ${htmlOutput}</div>
-                <button type="button">Read</button>
-                <button type="button">Delete</button>
-                </div>`
-    }
-    bookShelf.innerHTML = display;
-}
 
 function clearInput() {
     title.value = ""
@@ -178,3 +138,42 @@ function closePopup() {
 //     }
 //         return value;
 // })}
+/* function showBook() {
+if (storageExist !== null) {
+    let i = 0;
+    let display = "";
+    while (i < lengthCheck.length) {
+        display += 
+               `<div id="book-shelf-item">
+                <div class="box">Title: ${lengthCheck[i]['title']}</div>
+                <div class="box">Author: ${lengthCheck[i]['author']}</div>
+                <div class="box">Pages: ${lengthCheck[i]['pages']}</div>
+                <button type="button">Read</button>
+                <button type="button">Delete</button>
+                </div>`;
+    i++;
+    } bookShelf.innerHTML = display;
+} else {
+    bookShelf.innerHTML = ""
+}
+} */
+// function displayBook() {
+//     let display = ""
+//     for (let i = 0; i < myLibrary.length; i++) {
+//         const htmlOutput = JSON.stringify(myLibrary[i], (key, value) => {
+//             if (key === "read") { // hide the propery with the key "read"
+//                 return undefined;
+//             }
+//                 return value;
+//         });
+
+//     display+= `<div id="book-shelf-item">
+//                 <div class="box">Title: ${htmlOutput}</div>
+//                 <div class="box">Author: ${htmlOutput}</div>
+//                 <div class="box">Pages: ${htmlOutput}</div>
+//                 <button type="button">Read</button>
+//                 <button type="button">Delete</button>
+//                 </div>`
+//     }
+//     bookShelf.innerHTML = display;
+// }
