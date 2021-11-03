@@ -15,6 +15,9 @@ let myLibrary = [] // Empty local array as the base
 
 window.onload = () => { 
     loadBook()
+    if (storageExist) {
+    showBooks()
+    }
     }
 
 function loadBook() {
@@ -71,6 +74,7 @@ function addBookToLibrary() {
         newBookEntry.read = false
     }
     dataChecker(newBookEntry)
+    showBooks()
     clearInput()
     closePopup()
 }
