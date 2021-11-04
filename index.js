@@ -58,7 +58,6 @@ function addBookToLibrary() {
     const newBookEntry = Object.create(book)
     const info = document.querySelectorAll('[data-cate]')
     const checkbox = document.getElementById('checkbox')
-    let display = ""
     info.forEach(item => {
         switch (item.dataset.cate) {
             case "title":
@@ -75,16 +74,7 @@ function addBookToLibrary() {
         newBookEntry.read = false
     }
     dataChecker(newBookEntry)
-    for (let i = 0; i < myLibrary.length; i++) {
-    display+= `<div id="book-shelf-item">
-                <div class="box">Title: ${myLibrary[i]['title']}</div>
-                <div class="box">Author: ${myLibrary[i]['author']}</div>
-                <div class="box">Pages: ${myLibrary[i]['pages']}</div>
-                <button type="button">Read</button>
-                <button type="button">Delete</button>
-                </div>`
-    }
-    bookShelf.innerHTML = display;
+    localLoader()
     clearInput()
     closePopup()
 }
@@ -113,6 +103,20 @@ function closePopup() {
     } else {
         popUp.style.display = "none";
     }
+}
+
+function localLoader() {
+    let display = ""
+    for (let i = 0; i < myLibrary.length; i++) {
+        display+= `<div id="book-shelf-item">
+                    <div class="box">Title: ${myLibrary[i]['title']}</div>
+                    <div class="box">Author: ${myLibrary[i]['author']}</div>
+                    <div class="box">Pages: ${myLibrary[i]['pages']}</div>
+                    <button type="button">Read</button>
+                    <button type="button">Delete</button>
+                    </div>`
+        }
+        bookShelf.innerHTML = display;
 }
 
 // if (item.dataset.cate === "title") {
