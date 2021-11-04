@@ -11,6 +11,7 @@ const storageExist = JSON.parse(localStorage.getItem("myLibrary"))
 const checker = localStorage.getItem("myLibrary")
 const lengthCheck = JSON.parse(checker)
 const deleter = document.getElementsByClassName('delete')
+const removeBtn = document.getElementsByClassName('remove')
 
 let myLibrary = [] // Empty local array as the base
 
@@ -38,8 +39,8 @@ function showBooks() {
         <div class="box">Title: ${storageExist[i]['title']}</div>
         <div class="box">Author: ${storageExist[i]['author']}</div>
         <div class="box">Pages: ${storageExist[i]['pages']}</div>
-        <button type="button">Read</button>
-        <button type="button">Delete</button>
+        <button type="button" class="read">Read</button>
+        <button type="button" class="remove">Delete</button>
         </div>`;
         i++;  
         } bookShelf.innerHTML = display;
@@ -76,6 +77,11 @@ function addBookToLibrary() {
     }
     dataChecker(newBookEntry)
     localLoader()
+    Array.from(removeBtn).forEach((removeButton) => {
+        removeButton.addEventListener('click', () => {
+          removeButton.parentNode.remove();
+        });
+      });
     clearInput()
     closePopup()
 }
@@ -113,12 +119,14 @@ function localLoader() {
                         <div class="box">Title: ${myLibrary[i]['title']}</div>
                         <div class="box">Author: ${myLibrary[i]['author']}</div>
                         <div class="box">Pages: ${myLibrary[i]['pages']}</div>
-                        <button type="button">Read</button>
-                        <button type="button">Delete</button>
+                        <button type="button" class="read">Read</button>
+                        <button type="button" class="remove">Delete</button>
                     </div>`
         }
         bookShelf.innerHTML = display;
 }
+
+
 
 // if (item.dataset.cate === "title") {
 //     newBookEntry.title = item.value;
