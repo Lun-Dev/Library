@@ -10,6 +10,7 @@ const bookShelf = document.querySelector("#book-shelf")
 const storageExist = JSON.parse(localStorage.getItem("myLibrary"))
 const checker = localStorage.getItem("myLibrary")
 const lengthCheck = JSON.parse(checker)
+const deleter = document.getElementsByClassName('delete')
 
 let myLibrary = [] // Empty local array as the base
 
@@ -109,11 +110,11 @@ function localLoader() {
     let display = ""
     for (let i = 0; i < myLibrary.length; i++) {
         display+= `<div id="book-shelf-item">
-                    <div class="box">Title: ${myLibrary[i]['title']}</div>
-                    <div class="box">Author: ${myLibrary[i]['author']}</div>
-                    <div class="box">Pages: ${myLibrary[i]['pages']}</div>
-                    <button type="button">Read</button>
-                    <button type="button">Delete</button>
+                        <div class="box">Title: ${myLibrary[i]['title']}</div>
+                        <div class="box">Author: ${myLibrary[i]['author']}</div>
+                        <div class="box">Pages: ${myLibrary[i]['pages']}</div>
+                        <button type="button">Read</button>
+                        <button type="button">Delete</button>
                     </div>`
         }
         bookShelf.innerHTML = display;
