@@ -22,7 +22,7 @@ window.onload = () => {
 
 // Grabs localstorage array of objects and make local array equals to it
 function loadBook() {
-	if (storageExist) { // On load, check if there is existing key
+    if (storageExist) { // On load, check if there is existing key
         myLibrary = storageExist // If exist, the empty local array equals to existing localStorage
   }
 }
@@ -185,3 +185,4 @@ if (storageExist !== null) {
 //     }
 //     bookShelf.innerHTML = display;
 // }
+
