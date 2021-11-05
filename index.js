@@ -19,6 +19,7 @@ window.onload = () => {
     if (storageExist) {
         loadBook()
         showBooks() // renders all objects within localStorage
+        parentRemover()
     }
 }
 
@@ -77,11 +78,7 @@ function addBookToLibrary() {
     }
     dataChecker(newBookEntry)
     localLoader()
-    Array.from(removeBtn).forEach((removeButton) => {
-        removeButton.addEventListener('click', () => {
-          removeButton.parentNode.remove();
-        });
-      });
+    parentRemover()
     clearInput()
     closePopup()
 }
@@ -124,8 +121,16 @@ function localLoader() {
                     </div>`
         }
         bookShelf.innerHTML = display;
+    parentRemover()
 }
 
+function parentRemover() {
+    Array.from(removeBtn).forEach((removeButton) => {
+        removeButton.addEventListener('click', () => {
+        removeButton.parentNode.remove();
+        });
+    });
+}
 
 
 // if (item.dataset.cate === "title") {
