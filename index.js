@@ -10,7 +10,7 @@ const bookShelf = document.querySelector("#book-shelf")
 const storageExist = JSON.parse(localStorage.getItem("myLibrary"))
 const checker = localStorage.getItem("myLibrary")
 const lengthCheck = JSON.parse(checker)
-const deleter = document.getElementsByClassName('delete')
+// const deleter = document.getElementsByClassName('delete')
 const removeBtn = document.getElementsByClassName('remove')
 
 let myLibrary = [] // Empty local array as the base
