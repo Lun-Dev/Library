@@ -10,18 +10,47 @@ const bookShelf = document.querySelector("#book-shelf")
 const storageExist = JSON.parse(localStorage.getItem("myLibrary"))
 const checker = localStorage.getItem("myLibrary")
 const lengthCheck = JSON.parse(checker)
-// const deleter = document.getElementsByClassName('delete')
+const deleter = document.getElementsByClassName('delete')
 const removeBtn = document.getElementsByClassName('remove')
+
+const selector = document.querySelector('.title2')
+const lister = document.querySelector('.list')
+
+let myLibrary2 = []
+
+function addElement() {
+    if(selector.value.trim() != "") {
+        myLibrary2.push(selector.value.trim())
+        console.log(myLibrary2)
+        display();
+    }
+}
+
+function display() {
+    lister.innerHTML = "";
+    for (let i = 0; i < myLibrary2.length; i++) {
+        lister.innerHTML += `<center><div class="element">${myLibrary2[i]}<button type="button" class="del" onclick="delDel("${i}")>Delete</button></div></center>`
+    }
+}
+
+function delDel(index) {
+    myLibrary2.splice(index, 1)
+    display()
+}
+
+
+
+
 
 let myLibrary = [] // Empty local array as the base
 
-window.onload = () => { 
-    if (storageExist) {
-        loadBook()
-        showBooks() // renders all objects within localStorage
-        parentRemover()
-    }
-}
+// window.onload = () => { 
+//     if (storageExist) {
+//         loadBook()
+//         showBooks() // renders all objects within localStorage
+//         parentRemover()
+//     }
+// }
 
 // Grabs localstorage array of objects and make local array equals to it
 function loadBook() {
@@ -47,8 +76,8 @@ function showBooks() {
         } bookShelf.innerHTML = display;
     }
 
-addBookBtn.addEventListener("click", closePopup) // no need "()" for function
-submitBtn.addEventListener("click", addBookToLibrary)
+// addBookBtn.addEventListener("click", closePopup) // no need "()" for function
+// submitBtn.addEventListener("click", addBookToLibrary)
 
 const book = { // Prototype Object
     title: "", // Title of book
