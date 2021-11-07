@@ -18,10 +18,22 @@ const lister = document.querySelector('.list')
 
 let myLibrary2 = []
 
+window.onload = function() {
+    if(JSON.parse(localStorage.getItem("myNewLibrary") != null)) {
+        myLibrary2 = JSON.parse(localStorage.getItem("myNewLibrary"));
+        console.log(myLibrary2)
+        display();
+    }
+}
+
 function addElement() {
     if(selector.value.trim() != "") {
         myLibrary2.push(selector.value.trim())
-        console.log(myLibrary2)
+        if(localStorage.getItem("myNewLibrary") == null) {
+            localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+        } else {
+            localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+        }
         display();
     }
 }
@@ -35,6 +47,11 @@ function display() {
 
 function delDel(index) {
     myLibrary2.splice(index, 1)
+    if(localStorage.getItem("myNewLibrary") == null) {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    } else {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    }
     display()
 }
 
