@@ -29,7 +29,7 @@ function addElement() {
 function display() {
     lister.innerHTML = "";
     for (let i = 0; i < myLibrary2.length; i++) {
-        lister.innerHTML += `<center><div class="element">${myLibrary2[i]}<button type="button" class="del" onclick="delDel("${i}")>Delete</button></div></center>`
+        lister.innerHTML += `<center><div class="element">${myLibrary2[i]}<button type='button' class='del' onclick='delDel("${i}")'>Delete</button></div></center>`
     }
 }
 
