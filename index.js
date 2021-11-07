@@ -14,6 +14,8 @@ const deleter = document.getElementsByClassName('delete')
 const removeBtn = document.getElementsByClassName('remove')
 
 const selector = document.querySelector('.title2')
+const selector2 = document.querySelector('.author2')
+const selector3 = document.querySelector('.pages2')
 const lister = document.querySelector('.list')
 
 let myLibrary2 = []
@@ -26,9 +28,38 @@ window.onload = function() {
     }
 }
 
-function addElement() {
-    if(selector.value.trim() != "") {
-        myLibrary2.push(selector.value.trim())
+const book = { // Prototype Object
+    title: "", // Title of book
+    author: "", // Author of book
+    pages: "", // Pages of book
+    read: false // Read or not?
+};
+
+function addBookToLibrary() {
+    const newBookEntry = Object.create(book)
+    const info = document.querySelectorAll('[data-cate]')
+    const checkbox = document.getElementById('checkbox')
+    info.forEach(item => {
+        switch (item.dataset.cate) {
+            case "title":
+                newBookEntry.title = item.value;
+            case "author":
+                newBookEntry.author = item.value;
+            case "pages":
+                newBookEntry.pages = parseInt(item.value)
+        }
+    })
+    if (checkbox.checked) {
+        newBookEntry.read = true
+    } else {
+        newBookEntry.read = false
+    }
+    addElement(newBookEntry)
+}
+
+function addElement(newBookEntry) {
+    if(selector.value.trim() != "" && selector2.value.trim() != "" && selector3.value.trim() != "") {
+        myLibrary2.push(newBookEntry)
         if(localStorage.getItem("myNewLibrary") == null) {
             localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
         } else {
@@ -41,7 +72,11 @@ function addElement() {
 function display() {
     lister.innerHTML = "";
     for (let i = 0; i < myLibrary2.length; i++) {
-        lister.innerHTML += `<center><div class="element">${myLibrary2[i]}<button type='button' class='del' onclick='delDel("${i}")'>Delete</button></div></center>`
+        lister.innerHTML += `<center>
+                             <div class="element">Title: ${myLibrary2[i]['title']}</div>
+                             <div class="element">Author: ${myLibrary2[i]['author']}</div>
+                             <div class="element">Pages: ${myLibrary2[i]['pages']}</div>
+                             <button type='button' class='del' onclick='delDel("${i}")'>Delete</button></div></center>`
     }
 }
 
@@ -95,39 +130,6 @@ function showBooks() {
 
 // addBookBtn.addEventListener("click", closePopup) // no need "()" for function
 // submitBtn.addEventListener("click", addBookToLibrary)
-
-const book = { // Prototype Object
-    title: "", // Title of book
-    author: "", // Author of book
-    pages: "", // Pages of book
-    read: false // Read or not?
-};
-
-function addBookToLibrary() {
-    const newBookEntry = Object.create(book)
-    const info = document.querySelectorAll('[data-cate]')
-    const checkbox = document.getElementById('checkbox')
-    info.forEach(item => {
-        switch (item.dataset.cate) {
-            case "title":
-                newBookEntry.title = item.value;
-            case "author":
-                newBookEntry.author = item.value;
-            case "pages":
-                newBookEntry.pages = parseInt(pages.value)
-        }
-    })
-    if (checkbox.checked) {
-        newBookEntry.read = true
-    } else {
-        newBookEntry.read = false
-    }
-    dataChecker(newBookEntry)
-    localLoader()
-    parentRemover()
-    clearInput()
-    closePopup()
-}
 
 function dataChecker(newBookEntry) {
     if (storageExist) { // If there is "myLibrary" key in local storage, grab the JSON data and replace the empty array

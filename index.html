@@ -8,8 +8,18 @@
     </head>
     <body>
         <div class="container2">
-            <input type="text" class="title2">
-            <button type="button" class="reader" onclick="addElement()">Add</button>
+            <div class="form-element">
+                <input type="text" class="title2" data-cate="title" placeholder="Title">
+                <input type="text" class="author2" data-cate="author" placeholder="Author">
+                <input type="text" class="pages2" data-cate="pages" placeholder="Pages">
+            </div>
+            <div class="form-element" id="check">
+                <h3>Have you read it?</h3>
+                <input type="checkbox" id="checkbox">
+            </div>
+            <div class="form-element">
+                <button type="button" class="reader" onclick="addBookToLibrary()">Submit</button>
+            </div>
         </div>
         <div class="list"></div>
         <!-- <div class="container">
