@@ -1,8 +1,3 @@
-/* All of your book objects are going to be stored in a simple array, 
-so add a function to the script (not the constructor) 
-that can take user’s input and store the new book objects into an array. */
-
-const addBookBtn = document.getElementById("addBookBtn")
 const submitBtn = document.getElementById("submit")
 const popUp = document.getElementById("pop")
 const closeBtn = document.getElementById("addBookBtn")
@@ -16,12 +11,30 @@ const lengthCheck = JSON.parse(checker)
 const deleter = document.getElementsByClassName('delete')
 const removeBtn = document.getElementsByClassName('remove')
 
+const addBookBtn = document.querySelector('.fab')
 const selector = document.querySelector('.title2')
 const selector2 = document.querySelector('.author2')
 const selector3 = document.querySelector('.pages2')
 const lister = document.querySelector('.list')
 
 let myLibrary2 = [] // This is the base array in which it will store each book object
+
+addBookBtn.addEventListener("click", closePopup)
+
+function closePopup() {
+    if (popUp.style.display === "none") { //must be "===" cannot just "="
+        popUp.style.display = "block";
+    } else {
+        popUp.style.display = "none";
+    }
+}
+
+function clearInput() {
+    selector.value = ""
+    selector2.value = ""
+    selector3.value = ""
+    checkbox.checked = false;
+}
 
 window.onload = function() {
     if(JSON.parse(localStorage.getItem("myNewLibrary") != null)) { // if localstorage's array is not null
@@ -59,6 +72,8 @@ function addBookToLibrary() {
         newBookEntry.read = false
     }
     addElement(newBookEntry)
+    clearInput()
+    closePopup()
 }
 
 function addElement(newBookEntry) {
@@ -160,21 +175,6 @@ function dataChecker(newBookEntry) {
         localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     }
     }
-
-function clearInput() {
-    title.value = ""
-    author.value = ""
-    pages.value = ""
-    checkbox.checked = false;
-}
-
-function closePopup() {
-    if (popUp.style.display === "none") { //must be "===" cannot just "="
-        popUp.style.display = "block";
-    } else {
-        popUp.style.display = "none";
-    }
-}
 
 function localLoader() {
     let display = ""
