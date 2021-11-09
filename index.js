@@ -1,5 +1,6 @@
 const submitBtn = document.getElementById("submit")
 const popUp = document.getElementById("pop")
+const greyOut = document.querySelector('.overlay')
 const closeBtn = document.getElementById("addBookBtn")
 
 const bookShelf = document.querySelector("#book-shelf")
@@ -24,8 +25,10 @@ addBookBtn.addEventListener("click", closePopup)
 function closePopup() {
     if (popUp.style.display === "none") { //must be "===" cannot just "="
         popUp.style.display = "block";
+            greyOut.style.display = "block";
     } else {
         popUp.style.display = "none";
+            greyOut.style.display = "none";
     }
 }
 
