@@ -6,10 +6,13 @@ const addBookBtn = document.getElementById("addBookBtn")
 const submitBtn = document.getElementById("submit")
 const popUp = document.getElementById("pop")
 const closeBtn = document.getElementById("addBookBtn")
+
 const bookShelf = document.querySelector("#book-shelf")
-const storageExist = JSON.parse(localStorage.getItem("myLibrary"))
+
 const checker = localStorage.getItem("myLibrary")
+const storageExist = JSON.parse(localStorage.getItem("myLibrary"))
 const lengthCheck = JSON.parse(checker)
+
 const deleter = document.getElementsByClassName('delete')
 const removeBtn = document.getElementsByClassName('remove')
 
@@ -18,11 +21,11 @@ const selector2 = document.querySelector('.author2')
 const selector3 = document.querySelector('.pages2')
 const lister = document.querySelector('.list')
 
-let myLibrary2 = []
+let myLibrary2 = [] // This is the base array in which it will store each book object
 
 window.onload = function() {
-    if(JSON.parse(localStorage.getItem("myNewLibrary") != null)) {
-        myLibrary2 = JSON.parse(localStorage.getItem("myNewLibrary"));
+    if(JSON.parse(localStorage.getItem("myNewLibrary") != null)) { // if localstorage's array is not null
+        myLibrary2 = JSON.parse(localStorage.getItem("myNewLibrary")); // then local array equals to the value within localstorage
         console.log(myLibrary2)
         display();
     }
@@ -38,6 +41,7 @@ const book = { // Prototype Object
 function addBookToLibrary() {
     const newBookEntry = Object.create(book)
     const info = document.querySelectorAll('[data-cate]')
+    console.log(info)
     const checkbox = document.getElementById('checkbox')
     info.forEach(item => {
         switch (item.dataset.cate) {
@@ -61,7 +65,7 @@ function addElement(newBookEntry) {
     if(selector.value.trim() != "" && selector2.value.trim() != "" && selector3.value.trim() != "") {
         myLibrary2.push(newBookEntry)
         if(localStorage.getItem("myNewLibrary") == null) {
-            localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+            "myNewLibrary", JSON.stringify(myLibrary2)
         } else {
             localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
         }
@@ -71,13 +75,32 @@ function addElement(newBookEntry) {
 
 function display() {
     lister.innerHTML = "";
-    for (let i = 0; i < myLibrary2.length; i++) {
+    for (let i = 0; i < myLibrary2.length; i++) { 
         lister.innerHTML += `<center>
                              <div class="element">Title: ${myLibrary2[i]['title']}</div>
                              <div class="element">Author: ${myLibrary2[i]['author']}</div>
-                             <div class="element">Pages: ${myLibrary2[i]['pages']}</div>
-                             <button type='button' class='del' onclick='delDel("${i}")'>Delete</button></div></center>`
+                             <div class="element">Pages: ${myLibrary2[i]['pages']}</div> 
+                             <button type="button" class="reading" onclick='read("${i}")'>${myLibrary2[i]['read'] ? 'Read' : "Not Read"}</button>
+                             <button type='button' class='del' onclick='delDel("${i}")'>Delete</button>
+                             </div>
+                             </center>`
     }
+}
+
+function read(index) {
+    if(myLibrary2[index]['read']) {
+        myLibrary2[index]['read'] = false
+        console.log(myLibrary2[index]['read'])
+    } else {
+        myLibrary2[index]['read'] = true
+        console.log(myLibrary2[index]['read'])
+    }
+    if(localStorage.getItem("myNewLibrary") == null) {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    } else {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    }
+    display()
 }
 
 function delDel(index) {
@@ -89,10 +112,6 @@ function delDel(index) {
     }
     display()
 }
-
-
-
-
 
 let myLibrary = [] // Empty local array as the base
 
