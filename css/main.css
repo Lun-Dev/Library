@@ -31,6 +31,13 @@ h2 {
     border: 30px rgba(192,192,192,1);
 }
 
+.close-btn {
+    position: absolute;
+    left: 85%;
+    top: 1%;
+    font-size: 30px;
+}
+
 #pop {
     display: none;
 }
@@ -56,7 +63,8 @@ h2 {
 #book-shelf {
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(2, 250px);
+    margin: 10px;
+    /* grid-template-columns: repeat(2, 200px); */
     /* https://www.youtube.com/watch?v=9zBsdzdE4sM */
 }
 
@@ -65,14 +73,20 @@ h2 {
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
-    width: 200px;
-    margin: 10px
+    border-radius: 10%;
+    width: 300px;
+    margin: 10px;
+}
+
+#book-shelf-item > * {
+    margin: 10px;
+    text-align: center;
 }
 
 .fab {
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
     background-color: #608000;
     width: 60px;
     height: 60px;

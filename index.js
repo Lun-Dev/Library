@@ -17,10 +17,12 @@ const selector = document.querySelector('.title2')
 const selector2 = document.querySelector('.author2')
 const selector3 = document.querySelector('.pages2')
 const lister = document.querySelector('.list')
+const closingBtn = document.querySelector('.close-btn')
 
 let myLibrary2 = [] // This is the base array in which it will store each book object
 
 addBookBtn.addEventListener("click", closePopup)
+closingBtn.addEventListener("click", closePopup)
 
 function closePopup() {
     if (popUp.style.display === "none") { //must be "===" cannot just "="
@@ -92,15 +94,15 @@ function addElement(newBookEntry) {
 }
 
 function display() {
-    lister.innerHTML = "";
+    bookShelf.innerHTML = "";
     for (let i = 0; i < myLibrary2.length; i++) { 
-        lister.innerHTML += `<div id="book-shelf-item">
-                                <div class="element">Title: ${myLibrary2[i]['title']}</div>
-                                <div class="element">Author: ${myLibrary2[i]['author']}</div>
-                                <div class="element">Pages: ${myLibrary2[i]['pages']}</div> 
-                                <button type="button" class="reading" onclick='read("${i}")'>${myLibrary2[i]['read'] ? 'Read' : "Not Read"}</button>
-                                <button type='button' class='del' onclick='delDel("${i}")'>Delete</button>
-                             </div>`
+        bookShelf.innerHTML += `<div id="book-shelf-item">
+                                    <div class="element">Title: ${myLibrary2[i]['title']}</div>
+                                    <div class="element">Author: ${myLibrary2[i]['author']}</div>
+                                    <div class="element">Pages: ${myLibrary2[i]['pages']}</div> 
+                                    <button type="button" class="reading" onclick='read("${i}")'>${myLibrary2[i]['read'] ? 'Read' : "Not Read"}</button>
+                                    <button type='button' class='del' onclick='delDel("${i}")'>Delete</button>
+                                </div>`
     }
 }
 
