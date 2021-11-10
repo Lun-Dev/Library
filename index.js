@@ -120,10 +120,10 @@ function read(index) {
 
 function delDel(index) {
     myLibrary2.splice(index, 1)
-    if(localStorage.getItem("myNewLibrary") == null) {
-        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    if(window.localStorage.getItem("myNewLibrary") == null) {
+        window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     } else {
-        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+        window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     }
     display()
 }
