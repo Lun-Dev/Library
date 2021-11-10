@@ -2,7 +2,6 @@ const submitBtn = document.getElementById("submit")
 const popUp = document.getElementById("pop")
 const greyOut = document.querySelector('.overlay')
 const closeBtn = document.getElementById("addBookBtn")
-
 const bookShelf = document.querySelector("#book-shelf")
 
 const checker = localStorage.getItem("myLibrary")
