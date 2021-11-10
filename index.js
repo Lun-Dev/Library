@@ -2,6 +2,7 @@ const submitBtn = document.getElementById("submit")
 const popUp = document.getElementById("pop")
 const greyOut = document.querySelector('.overlay')
 const closeBtn = document.getElementById("addBookBtn")
+
 const bookShelf = document.querySelector("#book-shelf")
 
 const checker = localStorage.getItem("myLibrary")
@@ -101,4 +102,30 @@ function display() {
                                     <button type='button' class='del' onclick='delDel("${i}")'>Delete</button>
                                 </div>`
     }
+}
+
+function read(index) {
+    if(myLibrary2[index]['read']) {
+        myLibrary2[index]['read'] = false
+        console.log(myLibrary2[index]['read'])
+    } else {
+        myLibrary2[index]['read'] = true
+        console.log(myLibrary2[index]['read'])
+    }
+    if(localStorage.getItem("myNewLibrary") == null) {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    } else {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    }
+    display()
+}
+
+function delDel(index) {
+    myLibrary2.splice(index, 1)
+    if(localStorage.getItem("myNewLibrary") == null) {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    } else {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    }
+    display()
 }
