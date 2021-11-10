@@ -17,24 +17,26 @@
         <div class="popup" id="pop">
             <div class="close-btn">&times;</div>
             <div class="container2">
-                <div class="form-element">
-                    <h2>New Book</h2>
-                </div>
-                <div class="form-element" id="input-area">
-                    <label for="title2">Title:</label>
-                    <input type="text" class="title2" data-cate="title" placeholder="Title">
-                    <label for="author2">Author:</label>
-                    <input type="text" class="author2" data-cate="author" placeholder="Author">
-                    <label for="pages2">Pages:</label>
-                    <input type="text" class="pages2" data-cate="pages" placeholder="Pages">
-                </div>
-                <div class="form-element" id="check">
-                    <h3>Have you read it?</h3>
-                    <input type="checkbox" id="checkbox">
-                </div>
-                <div class="form-element">
-                    <button type="button" class="reader" onclick="addBookToLibrary()">Submit</button>
-                </div>
+                <form onsubmit="return addBookToLibrary();">
+                    <div class="form-element">
+                        <h2>New Book</h2>
+                    </div>
+                    <div class="form-element" id="input-area">
+                        <label for="title2">Title:</label>
+                        <input type="text" class="title2" data-cate="title" placeholder="Title" required>
+                        <label for="author2">Author:</label>
+                        <input type="text" class="author2" data-cate="author" placeholder="Author" required>
+                        <label for="pages2">Pages:</label>
+                        <input type="text" class="pages2" data-cate="pages" placeholder="Pages" required>
+                    </div>
+                    <div class="form-element" id="check">
+                        <h3>Have you read it?</h3>
+                        <input type="checkbox" id="checkbox">
+                    </div>
+                    <div class="form-element">
+                        <button type="submit" class="reader">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div id="book-shelf"></div>
