@@ -63,7 +63,7 @@ h2 {
 #book-shelf {
     justify-content: center;
     display: grid;
-    margin: 10px;
+    margin: 20px;
     /* grid-template-columns: repeat(2, 200px); */
     /* https://www.youtube.com/watch?v=9zBsdzdE4sM */
 }
