@@ -42,8 +42,8 @@ function clearInput() {
 }
 
 window.onload = function() {
-    if(JSON.parse(localStorage.getItem("myNewLibrary") != null)) { // if localstorage's array is not null
-        myLibrary2 = JSON.parse(localStorage.getItem("myNewLibrary")); // then local array equals to the value within localstorage
+    if(JSON.parse(window.localStorage.getItem("myNewLibrary") != null)) { // if localstorage's array is not null
+        myLibrary2 = JSON.parse(window.localStorage.getItem("myNewLibrary")); // then local array equals to the value within localstorage
         display();
     }
 }
@@ -82,10 +82,10 @@ function addBookToLibrary() {
 function addElement(newBookEntry) {
     if(selector.value.trim() != "" && selector2.value.trim() != "" && selector3.value.trim() != "") {
         myLibrary2.push(newBookEntry)
-        if(localStorage.getItem("myNewLibrary") == null) {
+        if(window.localStorage.getItem("myNewLibrary") == null) {
             "myNewLibrary", JSON.stringify(myLibrary2)
         } else {
-            localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+            window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
         }
         display();
     }
@@ -107,15 +107,13 @@ function display() {
 function read(index) {
     if(myLibrary2[index]['read']) {
         myLibrary2[index]['read'] = false
-        console.log(myLibrary2[index]['read'])
     } else {
         myLibrary2[index]['read'] = true
-        console.log(myLibrary2[index]['read'])
     }
-    if(localStorage.getItem("myNewLibrary") == null) {
-        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    if(window.localStorage.getItem("myNewLibrary") == null) {
+        window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     } else {
-        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+        window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     }
     display()
 }
