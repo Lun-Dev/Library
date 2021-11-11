@@ -37,12 +37,12 @@ function clearInput() {
     checkbox.checked = false;
 }
 
-window.onload = setTimeout(function() {
+window.onload = function() {
     if(JSON.parse(localStorage.getItem("myNewLibrary") != null)) { // if localstorage's array is not null
         myLibrary2 = JSON.parse(localStorage.getItem("myNewLibrary")); // then local array equals to the value within localstorage
         display();
     }
-}, 1000);
+}
 
 const book = { // Prototype Object
     title: "", // Title of book
