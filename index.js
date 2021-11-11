@@ -21,9 +21,9 @@ let myLibrary2 = [] // This is the base array in which it will store each book o
 addBookBtn.addEventListener("click", closePopup)
 closingBtn.addEventListener("click", closePopup)
 formId.addEventListener("submit", addBookToLibrary)
-/* formId.addEventListener("submit", (ev) => {
+formId.addEventListener("submit", (ev) => {
     ev.preventDefault();
-}) */
+})
 function closePopup() {
     if (popUp.style.display === "none") { //must be "===" cannot just "="
         popUp.style.display = "block";
@@ -81,11 +81,7 @@ function addBookToLibrary() {
 
 function addElement(newBookEntry) {
     myLibrary2.push(newBookEntry)
-    if(localStorage.getItem("myNewLibrary") == null) {
-        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
-    } else {
-        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
-    }
+    localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     display();
 }
 
