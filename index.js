@@ -81,10 +81,11 @@ function addElement(newBookEntry) {
     myLibrary2.push(newBookEntry)
     if(localStorage.getItem("myNewLibrary") == null) {
         "myNewLibrary", JSON.stringify(myLibrary2)
+        display();
     } else {
         localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+        display();
     }
-    display();
 }
 
 function display() {
