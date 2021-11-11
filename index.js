@@ -80,15 +80,13 @@ function addBookToLibrary() {
 }
 
 function addElement(newBookEntry) {
-    if(selector.value.trim() != "" && selector2.value.trim() != "" && selector3.value.trim() != "") {
-        myLibrary2.push(newBookEntry)
-        if(localStorage.getItem("myNewLibrary") == null) {
-            "myNewLibrary", JSON.stringify(myLibrary2)
-        } else {
-            localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
-        }
-        display();
+    myLibrary2.push(newBookEntry)
+    if(localStorage.getItem("myNewLibrary") == null) {
+        "myNewLibrary", JSON.stringify(myLibrary2)
+    } else {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     }
+    display();
 }
 
 function display() {
