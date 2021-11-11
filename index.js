@@ -42,8 +42,8 @@ function clearInput() {
 }
 
 window.onload = function() {
-    if(JSON.parse(window.localStorage.getItem("myNewLibrary") != null)) { // if localstorage's array is not null
-        myLibrary2 = JSON.parse(window.localStorage.getItem("myNewLibrary")); // then local array equals to the value within localstorage
+    if(JSON.parse(localStorage.getItem("myNewLibrary") != null)) { // if localstorage's array is not null
+        myLibrary2 = JSON.parse(localStorage.getItem("myNewLibrary")); // then local array equals to the value within localstorage
         display();
     }
 }
@@ -82,10 +82,10 @@ function addBookToLibrary() {
 function addElement(newBookEntry) {
     if(selector.value.trim() != "" && selector2.value.trim() != "" && selector3.value.trim() != "") {
         myLibrary2.push(newBookEntry)
-        if(window.localStorage.getItem("myNewLibrary") == null) {
+        if(localStorage.getItem("myNewLibrary") == null) {
             "myNewLibrary", JSON.stringify(myLibrary2)
         } else {
-            window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+            localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
         }
         display();
     }
@@ -110,20 +110,20 @@ function read(index) {
     } else {
         myLibrary2[index]['read'] = true
     }
-    if(window.localStorage.getItem("myNewLibrary") == null) {
-        window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    if(localStorage.getItem("myNewLibrary") == null) {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     } else {
-        window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     }
     display()
 }
 
 function delDel(index) {
     myLibrary2.splice(index, 1)
-    if(window.localStorage.getItem("myNewLibrary") == null) {
-        window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+    if(localStorage.getItem("myNewLibrary") == null) {
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     } else {
-        window.localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
+        localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     }
     display()
 }
