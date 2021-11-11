@@ -2,16 +2,12 @@ const submitBtn = document.getElementById("submit")
 const popUp = document.getElementById("pop")
 const greyOut = document.querySelector('.overlay')
 const closeBtn = document.getElementById("addBookBtn")
-
 const bookShelf = document.querySelector("#book-shelf")
-
 const checker = localStorage.getItem("myLibrary")
 const storageExist = JSON.parse(localStorage.getItem("myLibrary"))
 const lengthCheck = JSON.parse(checker)
-
 const deleter = document.getElementsByClassName('delete')
 const removeBtn = document.getElementsByClassName('remove')
-
 const addBookBtn = document.querySelector('.fab')
 const selector = document.querySelector('.title2')
 const selector2 = document.querySelector('.author2')
@@ -41,12 +37,12 @@ function clearInput() {
     checkbox.checked = false;
 }
 
-window.onload = function() {
+window.onload = setTimeout(function() {
     if(JSON.parse(localStorage.getItem("myNewLibrary") != null)) { // if localstorage's array is not null
         myLibrary2 = JSON.parse(localStorage.getItem("myNewLibrary")); // then local array equals to the value within localstorage
         display();
     }
-}
+}, 1000);
 
 const book = { // Prototype Object
     title: "", // Title of book
@@ -86,6 +82,7 @@ function addElement(newBookEntry) {
     } else {
         localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     }
+    display();
 }
 
 function display() {
