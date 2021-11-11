@@ -14,11 +14,13 @@ const selector2 = document.querySelector('.author2')
 const selector3 = document.querySelector('.pages2')
 const lister = document.querySelector('.list')
 const closingBtn = document.querySelector('.close-btn')
+const formId = document.getElementById("form1")
 
 let myLibrary2 = [] // This is the base array in which it will store each book object
 
 addBookBtn.addEventListener("click", closePopup)
 closingBtn.addEventListener("click", closePopup)
+formId.addEventListener("submit", addBookToLibrary)
 
 function closePopup() {
     if (popUp.style.display === "none") { //must be "===" cannot just "="
