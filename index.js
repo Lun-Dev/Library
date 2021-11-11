@@ -86,7 +86,6 @@ function addElement(newBookEntry) {
     } else {
         localStorage.setItem("myNewLibrary", JSON.stringify(myLibrary2))
     }
-    display();
 }
 
 function display() {
